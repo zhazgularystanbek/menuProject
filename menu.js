@@ -94,6 +94,9 @@ function getProduct() {
       getOrdersData();
     });
   });
+  nameInput.value = "";
+  priceInput.value = "";
+  urlInput.value = "";
 }
 
 getOrdersData();
