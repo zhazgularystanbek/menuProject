@@ -145,7 +145,15 @@ function getOrdersData() {
     orderDiv.append(txtDiv);
     orderDiv.append(orderInfo);
     delBtn.addEventListener("click", () => {
-      removeOrderProduct(ind);
+      // removeOrderProduct(ind);
+      modal.style.display = "block";
+      modal.setAttribute("id", ind);
+    });
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "";
+    });
+    modalCloseBtn.addEventListener("click", () => {
+      modal.style.display = "";
     });
 
     plus.addEventListener("click", () => {
@@ -166,9 +174,19 @@ function getOrdersData() {
     });
   });
 }
-function removeOrderProduct(ind) {
+// function removeOrderProduct(ind) {
+//   let orderData = JSON.parse(localStorage.getItem("orderData")) || [];
+//   orderData.splice(ind, 1);
+//   localStorage.setItem("orderData", JSON.stringify(orderData));
+//   getOrdersData();
+// }
+
+modalDelBtn.addEventListener("click", () => {
   let orderData = JSON.parse(localStorage.getItem("orderData")) || [];
+  let ind = modal.getAttribute("id");
+  console.log(ind);
   orderData.splice(ind, 1);
   localStorage.setItem("orderData", JSON.stringify(orderData));
   getOrdersData();
-}
+  modal.style.display = "";
+});
