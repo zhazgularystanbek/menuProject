@@ -15,6 +15,7 @@ const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".close");
 const modalDelBtn = document.querySelector(".modal-del");
 const modalCloseBtn = document.querySelector(".modal-close");
+const modalTitle = document.querySelector(".modal-title");
 
 orderLink.addEventListener("click", () => {
   menu.style.display = "none";
@@ -147,6 +148,8 @@ function getOrdersData() {
     delBtn.addEventListener("click", () => {
       // removeOrderProduct(ind);
       modal.style.display = "block";
+      modalTitle.innerHTML = `Вы уверены, что <br>хотите удалить ${elem.name}?`;
+      console.log(elem.name);
       modal.setAttribute("id", ind);
     });
     closeModal.addEventListener("click", () => {
@@ -180,7 +183,6 @@ function getOrdersData() {
 //   localStorage.setItem("orderData", JSON.stringify(orderData));
 //   getOrdersData();
 // }
-
 modalDelBtn.addEventListener("click", () => {
   let orderData = JSON.parse(localStorage.getItem("orderData")) || [];
   let ind = modal.getAttribute("id");
